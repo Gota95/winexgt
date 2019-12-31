@@ -14,23 +14,23 @@
     <link rel="shortcut icon" href="favicon.ico">
 
     <link rel="stylesheet" href="{{asset('css/normalize.css')}}">
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/themify-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('css/flag-icon.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/cs-skin-elastic.css')}}">
-    <link rel="stylesheet" href="{{asset('public/iCheck/flat/blue.css')}}">
+      <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+      <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
+      <link rel="stylesheet" href="{{asset('css/themify-icons.css')}}">
+      <link rel="stylesheet" href="{{asset('css/flag-icon.min.css')}}">
+      <link rel="stylesheet" href="{{asset('css/cs-skin-elastic.css')}}">
 
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="{{asset('//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js')}}"></script>
-    <script src="{{asset('//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js')}}"></script>
+      <script src="{{asset('//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js')}}"></script>
+      <script src="{{asset('//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js')}}"></script>
+      <script src="{{asset('//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js')}}"></script>
 
-    <link rel="stylesheet" href="{{asset('//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css')}}"/>
-    <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
-    <link rel="stylesheet" href="{{asset('scss/style.css')}}">
-    <link href="{{asset('css/lib/vector-map/jqvmap.min.css')}}" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='styleshee' type='text/css'>
+      <link rel="stylesheet" href="{{asset('//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css')}}"/>
+      <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
+      <link rel="stylesheet" href="{{asset('scss/style.css')}}">
+      <link href="{{asset('css/lib/vector-map/jqvmap.min.css')}}" rel="stylesheet">
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='styleshee' type='text/css'>
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
@@ -252,10 +252,10 @@
 
     <!-- Right Panel -->
 
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/vendor/jquery-2.1.4.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="{{asset('js/plugins.js')}}"></script>
+    <script src="{{asset('js/main.js')}}"></script>
 
     @stack('scripts')
     <script src="{{asset('js/jquery.min.js')}}"></script>
@@ -268,6 +268,9 @@
     <script src="{{asset('js/lib/vector-map/jquery.vmap.min.js')}}"></script>
     <script src="{{asset('js/lib/vector-map/jquery.vmap.sampledata.js')}}"></script>
     <script src="{{asset('js/lib/vector-map/country/jquery.vmap.world.js')}}"></script>
+
+
+
     <script>
         ( function ( $ ) {
             "use strict";

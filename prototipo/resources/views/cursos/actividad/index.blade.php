@@ -2,7 +2,8 @@
 @section('contenido')
 <div class="row">
 	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-		<h3>Actividad Cursos<a href="actividad/create"><button class="btn btn-success">Nuevo</button></h3></a>
+		<h3> Actividad Cursos <a href="actividad/create"><button class="btn btn-success">Nuevo</button></a>
+		    <a href="{{URL::action('ActividadController@ractividad')}}" type="button"><button class="btn btn-lg btn-warning"><i class="fa fa-lg fa-clipboard"></i></button></a></h3>
 		<br>
 		{{-- @include('cursos.curso.search') --}}
 	</div>

@@ -77,6 +77,7 @@ Route::resource('pago','PagoController');
 
 //RUTAS DE MODULO DE ACTIVIDAD
 Route::resource('cursos/actividad','ActividadController');
+Route::get('reporte','ActividadController@ractividad');
 Route::resource('calendario','CalendarioController');
 
 //RUTAS DE MODULO DE Anexos

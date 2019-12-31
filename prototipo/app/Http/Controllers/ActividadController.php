@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Actividad;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\ActividadFormRequest;
-
+use Calendar;
 use Illuminate\Support\Facades\Input;
 use DB;
 
@@ -34,7 +34,7 @@ class ActividadController extends Controller
         ]
       );
     }
-    $calendar = \Calendar::addEvents($actividadl);
+    $calendar = Calendar::addEvents($actividadl);
     return view('cursos.actividad.index',["actividades"=>$actividades,"calendar"=>$calendar]);
   }
 
@@ -87,5 +87,18 @@ public function store(ActividadFormRequest $request /*Request $request*/){
   public function destroy($id){
     $actividad= DB::table('actividad')->where('idActividad', '=',$id)->delete();
     return Redirect::to('notas/aspecto/');
+  }
+
+  public function ractividad(){
+    $actividades=DB::table('actividad as act')
+    ->join('curso as c','act.curso_id','=','c.id')
+    ->select('act.IdActividad','act.Nombre_Actividad','act.Detalle','act.Fecha_inicio',
+    'act.Fecha_fin','act.Punteo','act.Observaciones',DB::raw('c.curso as curso'))
+    ->get();
+
+    $view= \View::make('cursos.actividad.reporte')->with('actividades',$actividades);
+    $pdf = \App::make('dompdf.wrapper');
+    $pdf->loadHTML($view);
+    return $pdf->stream('Tareas'.'.pdf');
   }
 }
