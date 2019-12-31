@@ -80,7 +80,7 @@ public function store(AsistenciaFormRequest $request){
     while($cont < count($idalumno))
     {
       $detalle=new DetalleAsistencia;
-      $detalle->idasistencia = $asistencia->IdAsistencia;
+      $detalle->idasistencia = $idasistencia;
       $detalle->idalumno=$idalumno[$cont];
       if($presente[$cont]=="P"){
       $detalle->presente=1;

@@ -7,11 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class DetallePago extends Model
 {
   protected $table='detallepago';
-  protected $primaryKey='idDetallePago';
+  protected $primaryKey='IdDetallePago';
 
   public $timestamps =false;
 
   protected $fillable = [
-    'Monto'
+    'Monto',
+    'pago_id',
+    'concepto_id'
   ];
 }

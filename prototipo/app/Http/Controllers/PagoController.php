@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Pago;
+use App\DetallePago;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\PagoFormRequest;
 use Illuminate\Support\Facades\Input;
@@ -21,10 +22,9 @@ class PagoController extends Controller
       $query= trim($request->get('searchText'));
       $pagos=DB::table('pago as p')
       ->join('estudiante as est','p.estudiante_id','=','est.id')
-      ->join('detallepago as det','p.detalle_id','=','det.IdDetallePago')
-      ->select('p.IdPago','p.Total','p.Fecha','p.Estado',DB::raw('est.nombres as est_nombres'),DB::raw('est.apellidos as est_apellidos'),DB::raw('det.descripcion as det_descripcion'),DB::raw('det.monto as det_monto'))
+      ->select('p.IdPago','p.Num_comprobante','p.Total','p.Fecha','p.Estado',DB::raw('est.nombres as est_nombres'),DB::raw('est.apellidos as est_apellidos'))
       ->where('p.Fecha','LIKE','%'.$query.'%')
-      ->orderBy('p.IdPago','asc')
+      ->orderBy('p.Num_comprobante','asc')
       ->paginate(7);
 
       return view('pago.index',["pagos"=>$pagos,"searchText"=>$query]);
@@ -33,20 +33,41 @@ class PagoController extends Controller
 
   public function create(){
     $estudiantes=DB::table('estudiante')->get();
-    $detalle=DB::table('detallepago')->get();
-    return view("pago.create",["estudiantes"=>$estudiantes],["detalles"=>$detalle]);
+    $conceptos=DB::table('concepto')->get();
+    return view("pago.create",["estudiantes"=>$estudiantes,"conceptos"=>$conceptos]);
   }
 
 public function store(PagoFormRequest $request /*Request $request*/){
+  // try {
+
+    DB::beginTransaction();
+
     $pago= new Pago;
     $pago->IdPago = $request->get('IdPago');
+    $pago->Num_comprobante = $request->get('Num_comprobante');
     $pago->Fecha = $request->get('Fecha');
     $pago->Total = $request->get('Total');
-    $pago->Estado = $request->get('Estado');
+    $pago->Estado = 1;
     $pago->estudiante_id = $request->get('estudiante_id');
-    $pago->detalle_id = $request->get('detalle_id');
-
     $pago->save();
+
+    $idpago = $pago->IdPago;
+    $idconcepto = $request->get('concepto_id');
+
+    $cont = 0;
+
+    while ($cont < count($idconcepto)) {
+      $detalle=new DetallePago;
+      $detalle->pago_id=$idpago;
+      $detalle->concepto_id=$idconcepto[$cont];
+      $detalle->save();
+      $cont=$cont+1;
+    }
+
+    DB::commit();
+  // }catch(\Exception $e){
+  //   DB::rollback();
+  // }
     return Redirect::to('pago/');
   }
 

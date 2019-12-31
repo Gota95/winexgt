@@ -13,10 +13,9 @@
     <div class="table-responsive">
       <table class="table table-striped table-bordered table-condensed table-hover">
         <thead>
+          <th>Comprobante No.</th>
           <th>Alumno</th>
           <th>Fecha Pago</th>
-          <th>Descripción</th>
-          <th>Monto</th>
           <th>Total</th>
           <th>Estado</th>
           <th>Opciones</th>
@@ -24,12 +23,14 @@
 
         @foreach($pagos as $pa)
           <tr>
+						<td>{{$pa->Num_comprobante}}</td>
             <td>{{$pa->est_nombres.''.$pa->est_apellidos}}</td>
             <td>{{$pa->Fecha}}</td>
-            <td>{{$pa->det_descripcion}}</td>
-            <td>{{$pa->det_monto}}</td>
-            <td>{{$pa->Total}}</td>
-            <td>{{$pa->Estado}}</td>
+            <td>{{'Q. '.$pa->Total}}</td>
+            <td>@if($pa->Estado==1)
+							{{'Pagado'}}
+							@endif
+						</td>
             <td>
               <a href="{{URL::action('PagoController@edit', $pa->IdPago)}}">
                 <button class="btn btn-info fa fa-edit"></button>
@@ -51,15 +52,4 @@
     {{$pagos->render()}}
   </div>
 </div>
-<script type="text/javascript">
-  var $aist=$pastencias;
-  if($aist->Presente==1)
-  {
-    checkbox=true;
-  }
-  else{
-    checkbox=false;
-  }
-    $('#presente').checkbox();
-</script>
 @endsection

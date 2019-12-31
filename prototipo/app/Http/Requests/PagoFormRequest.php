@@ -24,10 +24,13 @@ class PagoFormRequest extends FormRequest
     public function rules()
     {
         return [
+          'Num_comprobante',
           'Total',
           'Fecha',
           'Estado',
-          'estudiante_id'
+          'estudiante_id',
+          'pago_id',
+          'concepto_id'
         ];
     }
 }
