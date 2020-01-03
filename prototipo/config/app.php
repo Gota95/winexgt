@@ -178,6 +178,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         //full calendar
         MaddHatter\LaravelFullcalendar\ServiceProvider::class,
+        Telegram\Bot\Laravel\TelegramServiceProvider::class,
 
 
     ],
@@ -234,6 +235,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
+        'Telegram' => Telegram\Bot\Laravel\Facades\Telegram::class,
 
     ],
 
