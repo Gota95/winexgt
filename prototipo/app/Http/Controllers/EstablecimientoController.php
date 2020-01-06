@@ -57,11 +57,11 @@ public function store(EstablecimientoFormRequest $request /*Request $request*/){
   }
 
   public function show($id){
-    return view("establecimiento_educativo.show",["establecimiento"=>establecimiento::findOrFail($id)]);
+    return view("establecimiento_educativo.show",["establecimiento"=>Establecimiento::findOrFail($id)]);
   }
 
   public function edit($id){
-    return view("establecimiento_educativo.edit",["establecimiento"=>establecimiento::findOrFail($id)]);
+    return view("establecimiento_educativo.edit",["establecimiento"=>Establecimiento::findOrFail($id)]);
   }
 
   public function update(EstablecimientoFormRequest $request, $id){

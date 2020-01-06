@@ -11,16 +11,5 @@ class Estudiantes extends Model
 
   public $timestamps =false;
 
-  protected $fillable = [
-    'codigo',
-    'nombres',
-    'apellidos',
-    'fecha_nac',
-    'direccion',
-    'clave',
-    'certificado',
-    'foto',
-    'estado',
-    'genero_id'
-  ];
+  protected $guarded=[];
 }

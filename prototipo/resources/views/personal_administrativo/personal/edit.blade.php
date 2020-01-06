@@ -129,7 +129,7 @@
 						<label for="centro_id">Centro </label>
 						<select data-live-search="true" name="centro_id" id="centro_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($centros as $cen)
-								<option value="{{$cen->id}}">{{$cen->centro}}</option>
+								<option value="{{$cen->id}}">{{$cen->nombre}}</option>
 							@endforeach
 						</select>
 					</div>

@@ -8,6 +8,7 @@ use App\Estudiantes;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\EstudiantesFormRequest;
 use Illuminate\Support\Facades\Input;
+use App\Imports\EstudianteImport;
 use DB;
 
 class EstudiantesController extends Controller
@@ -15,7 +16,11 @@ class EstudiantesController extends Controller
   public function __construct(){
     $this->middleware('auth');
   }
-
+    public function import()
+    {
+        (new VehiclesImport)->import('vehicles.xlsx');
+        return Redirect::to('estudiantes_encargados/estudiantes');
+    }
   public function index(Request $request){
     if($request){
       $query= trim($request->get('searchText'));

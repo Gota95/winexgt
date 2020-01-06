@@ -74,7 +74,12 @@ public function store(PersonalFormRequest $request /*Request $request*/){
   }
 
   public function edit($id){
-    return view("personal_administrativo.personal.edit",["personal"=>Personal::findOrFail($id)]);
+    $cargo=DB::table('cargo')->get();
+    $users=DB::table('users')->get();
+    $centros=DB::table('establecimiento')->get();
+    $generos=DB::table('genero')->get();
+    return view("personal_administrativo.personal.edit",["personal"=>Personal::findOrFail($id),'cargos'=>$cargo,
+    'users'=>$users,'centros'=>$centros,'generos'=>$generos]);
   }
 
   public function update(PersonalFormRequest $request, $id){
