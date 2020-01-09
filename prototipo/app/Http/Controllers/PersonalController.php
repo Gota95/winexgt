@@ -74,7 +74,8 @@ public function store(PersonalFormRequest $request /*Request $request*/){
   }
 
   public function edit($id){
-    $cargo=DB::table('cargo')->get();
+    $personal=Personal::findOrFail($id);
+    $cargo=DB::table('cargo as c')->get();
     $users=DB::table('users')->get();
     $centros=DB::table('establecimiento')->get();
     $generos=DB::table('genero')->get();

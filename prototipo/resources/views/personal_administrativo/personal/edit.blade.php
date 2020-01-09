@@ -105,7 +105,7 @@
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label for="cargo_id">Cargo </label>
-						<select data-live-search="true" name="cargo_id" id="cargo_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
+						<select data-live-search="true" name="cargo_id" id="cargo_id" required value="{{ $personal->cargo_id }}" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($cargos as $car)
 								<option value="{{$car->id}}">{{$car->cargo}}</option>
 							@endforeach
@@ -116,7 +116,7 @@
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label for="users_id">Usuario </label>
-						<select data-live-search="true" name="usuario_id" id="usuario_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
+						<select data-live-search="true" name="usuario_id" id="usuario_id" required value="{{ $personal->usuario	 }}" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($users as $use)
 								<option value="{{$use->id}}">{{$use->email}}</option>
 							@endforeach
