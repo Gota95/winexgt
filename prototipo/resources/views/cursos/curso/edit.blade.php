@@ -15,7 +15,7 @@
 		</div>
 	</div>
 
-			{!!Form::model($curso,['method'=>'PATCH','route'=>['cursos.curso.update',$curso->id]])!!}
+			{!!Form::model($curso,['method'=>'PATCH','route'=>['curso.update',$curso->id]])!!}
 			{{Form::token()}}
 			<div class="row">
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -76,6 +76,4 @@
 				<button class="btn btn-danger" type="reset">Cancelar</button>
 			</div>
 			{!!Form::close()!!}
-		</div>
-	</div>
 @endsection

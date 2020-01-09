@@ -57,7 +57,9 @@ class CursosController extends Controller
   }
 
   public function edit($id){
-    return view("cursos.curso.edit",["curso"=>Cursos::findOrFail($id)]);
+    $grados=DB::table('grado')->get();
+    $personales=DB::table('personal')->get();
+    return view("cursos.curso.edit",["curso"=>Cursos::findOrFail($id),"personales"=>$personales,"grados"=>$grados]);
   }
 
   public function update(HorariosFormRequest $request, $id){
