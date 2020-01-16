@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 		<h3>Estudiantes <a href="estudiantes/create"><button class="btn btn-success">Nuevo</button></a>
-			<a href="{{route('/importar')}}"><button class="btn btn-warning">Importar</button></a></h3>
+			<a href="{{URL::action('EstudiantesController@ver')}}"><button class="btn btn-warning">Importar</button></a></h3>
 		<br>
 		@include('estudiantes_encargados.estudiantes.search')
 	</div>

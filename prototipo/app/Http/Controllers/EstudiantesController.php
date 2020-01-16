@@ -8,6 +8,8 @@ use App\Estudiantes;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\EstudiantesFormRequest;
 use Illuminate\Support\Facades\Input;
+use Maatwebsite\Excel\Concerns\Importable;
+use Maatwebsite\Excel\Concerns\ToModel;
 use App\Imports\EstudianteImport;
 use DB;
 
@@ -16,10 +18,18 @@ class EstudiantesController extends Controller
   public function __construct(){
     $this->middleware('auth');
   }
-    public function import()
+    public function import(Request $request)
     {
-        (new VehiclesImport)->import('vehicles.xlsx');
+      if(Input::hasFile('masivo')){
+        $file=Input::file('masivo');
+        $file->move(public_path().'/imports/estudiantes/',$file->getClientOriginalName());
+        (new EstudianteImport)->import(public_path('/imports/estudiantes/Masivo.xlsx'));
         return Redirect::to('estudiantes_encargados/estudiantes');
+      }
+    }
+
+    public function ver(){
+      return view('estudiantes_encargados.estudiantes.imports');
     }
   public function index(Request $request){
     if($request){
@@ -74,7 +84,7 @@ public function store(EstudiantesFormRequest $request /*Request $request*/){
     ->join('genero as gen', 'est.genero_id','=','gen.id')
     ->select('est.id','est.codigo','est.nombres','est.apellidos','est.fecha_nac','est.direccion','est.clave','est.certificado','est.foto','est.estado',DB::raw("gen.genero as genero"))
     ->where('est.id','=',$id)->first();
-    return view("estudiantes_encargados.estudiantes.show",["estudiante"=>Estudiantes::findOrFail($id)]);
+    return view("estudiantes_encargados.estudiantes.show",["estudiante"=>$estudiante]);
   }
 
   public function edit($id){

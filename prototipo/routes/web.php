@@ -23,9 +23,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('estudiantes_encargados/genero','GenerosController');
 Route::resource('estudiantes_encargados/encargado','EncargadosController');
 Route::resource('estudiantes_encargados/estudiantes','EstudiantesController');
-Route::name('/importar')->get('/estudiantes_encargados/estudiantes/imports','EstudiantesController@import');
+Route::get('views/estudiantes_encargados/estudiantes/imports', 'EstudiantesController@ver');
+Route::post('/subir','EstudiantesController@import');
 
-Route::post('/importest','EstudiantesController@import');
 
 //RUTAS DE MODULO ESTABLECIMIENTO EDDUCATIVO
 Route::resource('establecimiento_educativo','EstablecimientoController');

@@ -3,9 +3,9 @@
 namespace App\Imports;
 
 use App\Estudiantes;
-use Maatwebsite\Excel\Concerns\{Importable, ToModel, WithHeadingRow, WithValidation};
+use Maatwebsite\Excel\Concerns\{Importable, ToModel, WithHeadingRow};
 
-class EstudianteImport implements ToModel, WithHeadingRow, WithValidation
+class EstudianteImport implements ToModel, WithHeadingRow
 {
     use Importable;
 
@@ -15,23 +15,22 @@ class EstudianteImport implements ToModel, WithHeadingRow, WithValidation
         'codigo'=> $row['codigo'],
         'nombres'=> $row['nombres'],
         'apellidos'=> $row['apellidos'],
-        'fecha_nac'=> $row['fecha_nacimiento'],
         'direccion'=> $row['direccion'],
         'estado'=> $row['estado'],
         'genero_id'=> $row['genero']
         ]);
     }
 
-    public function rules()
-    {
-      return [
-        'codigo'=> 'required|string|max:45',
-        'nombres'=> 'required|string|max:45',
-        'apellidos'=> 'required|string|max:45',
-        'fecha_nac',
-        'direccion'=> 'required|string|max:100',
-        'estado',
-        'genero_id'
-      ];
-    }
+    // public function rules()
+    // {
+    //   return [
+    //     'codigo'=> 'required|string|max:45',
+    //     'nombres'=> 'required|string|max:45',
+    //     'apellidos'=> 'required|string|max:45',
+    //     'fecha_nac',
+    //     'direccion'=> 'required|string|max:100',
+    //     'estado',
+    //     'genero_id'
+    //   ];
+    // }
 }
