@@ -128,17 +128,6 @@
 
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="centro_id">Centro </label>
-						<select data-live-search="true" name="centro_id" id="centro_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
-							@foreach($centros as $cen)
-								<option value="{{$cen->id}}">{{$cen->nombre}}</option>
-							@endforeach
-						</select>
-					</div>
-				</div>
-
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
 						<label for="users_id">Genero </label>
 						<select data-live-search="true" name="genero_id" id="genero_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($generos as $gen)

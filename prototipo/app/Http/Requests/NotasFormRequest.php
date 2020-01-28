@@ -24,11 +24,12 @@ class NotasFormRequest extends FormRequest
     public function rules()
     {
         return [
-          'nota',
-          'aspecto_id',
+          'nota1',
+          'nota2',
+          'nota3',
+          'nota4',
           'estudiante_id',
           'tipo_evaluacion',
-          'bimestre_id',
           'curso_id'
         ];
     }

@@ -24,7 +24,7 @@ class PersonalController extends Controller
       ->join('users as usu', 'per.usuario_id','=','usu.id')
       ->join('genero as gen', 'per.genero_id','=','gen.id')
       ->select('per.id','per.nombres','per.apellidos','per.fecha_nac','per.lugar_nac','per.estado_civil',
-      'per.direccion','per.inicio_labores','per.foto','per.cui','per.telefono','per.correo','per.estado','per.centro_id',DB::raw("car.cargo as cargo"),DB::raw("usu.email as usuario"),DB::raw("gen.genero as genero"))
+      'per.direccion','per.inicio_labores','per.foto','per.cui','per.telefono','per.correo','per.estado',DB::raw("car.cargo as cargo"),DB::raw("usu.email as usuario"),DB::raw("gen.genero as genero"))
       ->where('per.nombres','LIKE','%'.$query.'%')
       ->orderBy('per.id','asc')
       ->paginate(7);
@@ -36,9 +36,8 @@ class PersonalController extends Controller
   public function create(){
     $cargos=DB::table('cargo')->get();
     $generos=DB::table('genero')->get();
-    $centros=DB::table('centro')->get();
     $users=DB::table('users')->get();
-    return view("personal_administrativo.personal.create",["cargos"=>$cargos,"centros"=>$centros,"users"=>$users,"generos"=>$generos]);
+    return view("personal_administrativo.personal.create",["cargos"=>$cargos,"users"=>$users,"generos"=>$generos]);
   }
 
 public function store(PersonalFormRequest $request /*Request $request*/){
@@ -62,7 +61,6 @@ public function store(PersonalFormRequest $request /*Request $request*/){
     $personal->estado = $request->get('estado');
     $personal->cargo_id = $request->get('cargo_id');
     $personal->usuario_id = $request->get('usuario_id');
-    $personal->centro_id = $request->get('centro_id');
     $personal->genero_id = $request->get('genero_id');
 
     $personal->save();
@@ -77,10 +75,9 @@ public function store(PersonalFormRequest $request /*Request $request*/){
     $personal=Personal::findOrFail($id);
     $cargo=DB::table('cargo as c')->get();
     $users=DB::table('users')->get();
-    $centros=DB::table('establecimiento')->get();
     $generos=DB::table('genero')->get();
     return view("personal_administrativo.personal.edit",["personal"=>Personal::findOrFail($id),'cargos'=>$cargo,
-    'users'=>$users,'centros'=>$centros,'generos'=>$generos]);
+    'users'=>$users,'generos'=>$generos]);
   }
 
   public function update(PersonalFormRequest $request, $id){
@@ -104,7 +101,6 @@ public function store(PersonalFormRequest $request /*Request $request*/){
     $personal->estado = $request->get('estado');
     $personal->cargo_id = $request->get('cargo_id');
     $personal->usuario_id = $request->get('usuario_id');
-    $personal->centro_id = $request->get('centro_id');
     $personal->genero_id = $request->get('genero_id');
     $personal->update();
 

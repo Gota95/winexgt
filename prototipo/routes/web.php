@@ -57,6 +57,8 @@ Route::resource('notas/nota','NotasController');
 Route::resource('notas/tipo_evaluacion','TipoEvaluacionController');
 Route::resource('notas/boleta','BoletasController');
 Route::get('views/notas/boleta/{id}', 'BoletasController@boletabi1');
+Route::get('views/notas/nota/imports', 'NotasController@ver');
+Route::post('/subno','NotasController@import');
 
 //RUTAS DE MODULO USUARIOS
 Route::resource('usuarios','UsuariosController');

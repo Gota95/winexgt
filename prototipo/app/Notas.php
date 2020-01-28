@@ -11,12 +11,5 @@ class Notas extends Model
 
   public $timestamps =false;
 
-  protected $fillable = [
-    'nota',
-    'aspecto_id',
-    'estudiante_id',
-    'tipo_evaluacion',
-    'bimestre_id',
-    'curso_id'
-  ];
+  protected $guarded=[];
 }

@@ -38,7 +38,6 @@ class PersonalFormRequest extends FormRequest
           'estado',
           'cargo_id',
           'usuario_id',
-          'centro_id',
           'genero_id'
         ];
     }

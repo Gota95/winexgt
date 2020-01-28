@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Notas;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\NotasFormRequest;
+use App\Imports\NotasImport;
 use Illuminate\Support\Facades\Input;
 use DB;
 
@@ -20,18 +21,32 @@ class NotasController extends Controller
     if($request){
       $query= trim($request->get('searchText'));
       $notas=DB::table('nota as no')
-      ->join('aspecto as asp', 'no.aspecto_id','=','asp.id')
       ->join('estudiante as est', 'no.estudiante_id','=','est.id')
       ->join('curso as cur', 'no.curso_id','=','cur.id')
       ->join('tipo_evaluacion as te', 'no.tipo_evaluacion_id','=','te.id')
-      ->join('bimestre as bi', 'no.bimestre_id','=','bi.id')
-      ->select('no.id','no.nota',DB::raw("asp.aspecto as aspecto"),DB::raw("est.nombres as nombre_estudiante"),DB::raw("est.apellidos as apellido_estudiante"),DB::raw("cur.curso as curso"),DB::raw("te.tipo as tipo_evaluacion"),DB::raw("bi.bimestre as bimestre"))
-      ->where('no.nota','LIKE','%'.$query.'%')
+      ->select('no.id','no.nota1','no.nota2','no.nota3','no.nota4',DB::raw("est.nombres as nombre_estudiante"),DB::raw("est.apellidos as apellido_estudiante"),DB::raw("cur.curso as curso"),DB::raw("te.tipo as tipo_evaluacion"))
+      ->where('est.nombres','LIKE','%'.$query.'%')
       ->orderBy('no.id','asc')
       ->paginate(7);
 
       return view('notas.nota.index',["notas"=>$notas,"searchText"=>$query]);
     }
+  }
+  public function import(Request $request)
+  {
+    if(Input::hasFile('notas')){
+      $file=Input::file('notas');
+      $file->move(public_path().'/imports/notas/',$file->getClientOriginalName());
+      (new NotasImport)->import(public_path('/imports/notas/Notas.xlsx'));
+      return Redirect::to('notas/nota');
+    }
+  }
+
+  public function ver(){
+    $carreras=DB::table('carrera1')->get();
+    $grados=DB::table('grado')->get();
+    $secciones=DB::table('seccion')->get();
+    return view('notas.nota.imports',["carreras"=>$carreras,"grados"=>$grados,"secciones"=>$secciones]);
   }
 
   public function create(){
