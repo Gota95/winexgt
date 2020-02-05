@@ -38,32 +38,10 @@
 
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-					<label for="bimestre_id">Numero de Unidad </label>
-						<select data-live-search="true" name="bimestre_id" id="bimestre_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
-							@foreach($bimestres as $bi)
-								<option value="{{$bi->id}}">{{$bi->bimestre}}</option>
-							@endforeach
-						</select>
-					</div>
-				</div>
-
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
 						<label for="curso_id">Curso </label>
 						<select data-live-search="true" name="curso_id" id="curso_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($cursos as $cur)
 								<option value="{{$cur->id}}">{{$cur->curso}}</option>
-							@endforeach
-						</select>
-					</div>
-				</div>
-
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
-						<label for="aspecto_id">Aspecto </label>
-						<select data-live-search="true" name="aspecto_id" id="aspecto_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
-							@foreach($aspectos as $asp)
-								<option value="{{$asp->id}}">{{$asp->aspecto}}</option>
 							@endforeach
 						</select>
 					</div>

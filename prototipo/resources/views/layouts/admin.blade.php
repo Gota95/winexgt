@@ -19,6 +19,9 @@
       <link rel="stylesheet" href="{{asset('css/themify-icons.css')}}">
       <link rel="stylesheet" href="{{asset('css/flag-icon.min.css')}}">
       <link rel="stylesheet" href="{{asset('css/cs-skin-elastic.css')}}">
+      <link rel="stylesheet" href="{{asset('dist/css/skins/_all-skins.min.css')}}">
+      <link rel="stylesheet" href="{{asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
+        <link rel="stylesheet" href="{{asset('dist/css/AdminLTE.min.css')}}">
 
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 

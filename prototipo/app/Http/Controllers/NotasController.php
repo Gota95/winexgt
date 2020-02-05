@@ -37,7 +37,7 @@ class NotasController extends Controller
     if(Input::hasFile('notas')){
       $file=Input::file('notas');
       $file->move(public_path().'/imports/notas/',$file->getClientOriginalName());
-      (new NotasImport)->import(public_path('/imports/notas/Notas.xlsx'));
+      (new NotasImport)->import(public_path('/imports/notas/'.$file->getClientOriginalName()));
       return Redirect::to('notas/nota');
     }
   }
@@ -61,13 +61,13 @@ class NotasController extends Controller
 public function store(NotasFormRequest $request /*Request $request*/){
     $nota= new Notas;
     $nota->id = $request->get('id');
-    $nota->nota = $request->get('nota');
-    $nota->aspecto_id = $request->get('aspecto_id');
+    $nota->nota1 = $request->get('nota1');
+    $nota->nota2 = $request->get('nota2');
+    $nota->nota3 = $request->get('nota3');
+    $nota->nota4 = $request->get('nota4');
     $nota->estudiante_id = $request->get('estudiante_id');
     $nota->curso_id = $request->get('curso_id');
     $nota->tipo_evaluacion_id = $request->get('tipo_evaluacion_id');
-    $nota->bimestre_id = $request->get('bimestre_id');
-
     $nota->save();
     return Redirect::to('notas/nota/');
   }
@@ -77,23 +77,23 @@ public function store(NotasFormRequest $request /*Request $request*/){
   }
 
   public function edit($id){
-    $aspectos=DB::table('aspecto')->get();
     $estudiantes=DB::table('estudiante')->get();
     $cursos=DB::table('curso')->get();
     $tevaluaciones=DB::table('tipo_evaluacion')->get();
-    $bimestres=DB::table('bimestre')->get();
-    return view("notas.nota.edit",["nota"=>Notas::findOrFail($id),"aspectos"=>$aspectos,"estudiantes"=>$estudiantes,"cursos"=>$cursos,"tevaluaciones"=>$tevaluaciones,"bimestres"=>$bimestres]);
+    return view("notas.nota.edit",["nota"=>Notas::findOrFail($id),"aspectos"=>$aspectos,
+    "estudiantes"=>$estudiantes,"cursos"=>$cursos,"tevaluaciones"=>$tevaluaciones,"bimestres"=>$bimestres]);
   }
 
   public function update(NotasFormRequest $request, $id){
 
     $nota=Notas::findOrFail($id);
-    $nota->nota = $request->get('nota');
-    $nota->aspecto_id = $request->get('aspecto_id');
+    $nota->nota1 = $request->get('nota1');
+    $nota->nota2 = $request->get('nota2');
+    $nota->nota3 = $request->get('nota3');
+    $nota->nota4 = $request->get('nota4');
     $nota->estudiante_id = $request->get('estudiante_id');
     $nota->curso_id = $request->get('curso_id');
     $nota->tipo_evaluacion_id = $request->get('tipo_evaluacion_id');
-    $nota->bimestre_id = $request->get('bimestre_id');
 
     $nota->update();
 
