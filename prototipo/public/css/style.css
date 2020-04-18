@@ -68,6 +68,21 @@ a:hover,
 a:focus {
   text-decoration: none;
   color: #000; }
+  .bg {
+    /* The image used */
+    background-image: url("/imagenes/sistema/fondo.png");
+
+    /* Full height */
+    height: 100%;
+    widows: 100%;
+
+    /* Center and scale the image nicely */
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .cd{
+  background-color: rgba(0,0,0,0.5) !important;
+  }
 
 h1,
 h2,

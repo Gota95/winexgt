@@ -10,6 +10,8 @@
           <li>{{$error}}</li>
           @endforeach
         </ul>
+        <ul id="aler">
+        </ul>
 
       </div>
       @endif
@@ -18,11 +20,6 @@
 
 {!!Form::open(array('url'=>'asistencia/','method'=>'POST','autocomplete'=>'off','files'=>'true'))!!}
       {{Form::token()}}
-<div class="alert alert-warning">
-  <spaan id="aler">
-
-  </spaan>
-</div>
 <div class="row">
   <?php $fcha = date("Y-m-d");?>
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -80,8 +77,8 @@
           <br>
           <table id="detalles" class="table table-hover table-striped table-bordered table-condensed">
             <thead>
-              <th class="col-lg-2">Asistencia</th>
-              <th>Alumno</th>
+              <th>Asistencia</th>
+              <th class="col-lg-6">Alumno</th>
               <th>Opciones</th>
             </thead>
             <tbody>
@@ -141,7 +138,7 @@
 
                 asig.forEach(function(value,index){
                 if(value.carrera_id==idcarrera&&value.grado_id==idgrado&&value.seccion_id==idseccion){
-                var fila='<tr class="selected" id="fila'+cont+'"><td><input type="button hidden" class="btn btn-success" id="pre'+cont+'" name="presente[]" value="P" onclick="estado('+cont+');"></td><td><input type="hidden" name="idalumno[]" value="'+value.estudiante_id+'">'+value.e_nombres+' '+value.e_apellidos+'</td><td>Permiso<input type="checkbox" name="permiso[]" value=""></td></tr>';
+                var fila='<tr class="selected" id="fila'+cont+'"><td><input type="button hidden" class="btn btn-success" id="pre'+cont+'" focus="outline; none;" name="presente[]" value="P" onclick="estado('+cont+');"></td><td><input type="hidden" name="idalumno[]" value="'+value.estudiante_id+'">'+value.e_nombres+' '+value.e_apellidos+'</td><td><input type="button hidden" class="btn btn-info" id="per'+cont+'" name="permiso[]" value="NF" onclick="estadoF('+cont+');"></td></tr>';
                  cont++;
                 $('#detalles').append(fila);
                 cont++;}
@@ -154,13 +151,32 @@
               var valor=$('#pre'+ index).val();
               if(valor=="P")
               {
-              $('#pre' + index).addClass("btn btn-danger");
-              $('#pre'+index).val("A");
+                $('#pre' + index).addClass("btn btn-danger");
+                $('#pre'+index).val("A");
+                $('#pre'+index).blur();
               }
               else if(valor=="A"){
                 $('#pre' + index).removeClass("btn btn-danger");
                 $('#pre' + index).addClass("btn btn-success");
                 $('#pre'+index).val("P");
+                $('#pre'+index).blur();
+              }
+              console.log('Pretty Format:', $('#fila'+ index).val());
+            }
+
+            function estadoF(index){
+              var valor=$('#per'+ index).val();
+              if(valor=="NF")
+              {
+              $('#per' + index).addClass("btn btn-warning");
+              $('#per'+index).val("F");
+              $('#per'+index).blur();
+              }
+              else if(valor=="F"){
+                $('#per' + index).removeClass("btn btn-warning");
+                $('#per' + index).addClass("btn btn-info");
+                $('#per'+index).val("NF");
+                $('#per'+index).blur();
               }
               console.log('Pretty Format:', $('#fila'+ index).val());
             }

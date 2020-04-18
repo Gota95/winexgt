@@ -23,7 +23,11 @@
 						<label for="curso_id">Grado </label>
 						<select data-live-search="true" name="curso_id" id="curso_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($cursos as $cur)
-								<option value="{{$cur->id}}">{{$cur->curso}}</option>
+								@if ($actividad->curso_id==$cur->id)
+									<option value="{{$cur->id}}" selected>{{$cur->curso}}</option>
+								@else
+									<option value="{{$cur->id}}">{{$cur->curso}}</option>
+								@endif
 							@endforeach
 						</select>
 					</div>

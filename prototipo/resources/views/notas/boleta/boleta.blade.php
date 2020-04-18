@@ -22,8 +22,8 @@
 
 </head>
 <body>
-      <img src="img/logo.png"  height="100" width="100">
-      <SPAN style="position: absolute; top: 0 px; right:   150 px;"><b> Instituto Normal Mixto de Occidente "Justo Rufino Barrios"</b> </span>
+      <img src='imagenes/logos/{{$establecimiento->logo}}'  height="100" width="100">
+      <SPAN style="position: absolute; top: 0 px; right:   300 px;"><b> {{ $establecimiento->nombre }}</b> </span>
       <SPAN style="position: absolute; top: 20 px; right:  250 px;"><b> Boleta de Calificaciones</b> </span>
       <SPAN></span>
 
@@ -38,16 +38,13 @@
       <th>UNIDAD IV</th>
     </tr>
     @foreach($notas as $no)
-    {!!$bimestre = $no->bimestre!!}
-    @if($bimestre == 'I')
       <tr>
         <td>{{$no->curso}}</td>
-        <td> {{$no->nota}} </td>
-        <td> {{$no->nota}} </td>
-        <td> {{$no->nota}} </td>
-        <td> {{$no->nota}} </td>
+        <td> {{$no->nota1}} </td>
+        <td> {{$no->nota2}} </td>
+        <td> {{$no->nota3}} </td>
+        <td> {{$no->nota4}} </td>
       </tr>
-    @endif
     @endforeach
   </table>
 

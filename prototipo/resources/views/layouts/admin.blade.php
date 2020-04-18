@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title> Sistema INMO</title>
+    <title>Sistema WINEX</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,6 +14,7 @@
     <link rel="shortcut icon" href="favicon.ico">
 
     <link rel="stylesheet" href="{{asset('css/normalize.css')}}">
+    <link rel="stylesheet" href="{{asset('Ionicons/css/ionicons.min.css')}}">
       <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
       <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
       <link rel="stylesheet" href="{{asset('css/themify-icons.css')}}">
@@ -49,7 +50,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="./">INMO</a>
+                <a class="navbar-brand" href="./">WINEX</a>
                 <a class="navbar-brand hidden" href="./">I</a>
             </div>
 

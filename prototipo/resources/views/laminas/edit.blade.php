@@ -44,7 +44,11 @@
               <label for="categoria_id">Categoría </label>
               <select data-live-search="true" name="categoria_id" id="categoria_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
                 @foreach($categorias as $cat)
-                  <option value="{{$cat->id}}">{{$cat->nombre}}</option>
+									@if ($laminas->categoria_id==$cat->id)
+										<option value="{{$cat->id}}" selected>{{$cat->nombre}}</option>
+									@else
+										<option value="{{$cat->id}}">{{$cat->nombre}}</option>
+									@endif
                 @endforeach
               </select>
             </div>

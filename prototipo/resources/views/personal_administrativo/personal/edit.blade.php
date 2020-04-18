@@ -107,7 +107,11 @@
 						<label for="cargo_id">Cargo </label>
 						<select data-live-search="true" name="cargo_id" id="cargo_id" required value="{{ $personal->cargo_id }}" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($cargos as $car)
-								<option value="{{$car->id}}">{{$car->cargo}}</option>
+								@if ($personal->cargo_id==$car->id)
+									<option value="{{$car->id}}" selected>{{$car->cargo}}</option>
+								@else
+									<option value="{{$car->id}}">{{$car->cargo}}</option>
+								@endif
 							@endforeach
 						</select>
 					</div>
@@ -118,7 +122,11 @@
 						<label for="users_id">Usuario </label>
 						<select data-live-search="true" name="usuario_id" id="usuario_id" required value="{{ $personal->usuario	 }}" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($users as $use)
-								<option value="{{$use->id}}">{{$use->email}}</option>
+								@if ($personal->usuario_id==$use->id)
+									<option value="{{$use->id}}" selected>{{$use->email}}</option>
+								@else
+									<option value="{{$use->id}}">{{$use->email}}</option>
+								@endif
 							@endforeach
 						</select>
 					</div>
@@ -129,7 +137,11 @@
 						<label for="centro_id">Centro </label>
 						<select data-live-search="true" name="centro_id" id="centro_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($centros as $cen)
-								<option value="{{$cen->id}}">{{$cen->nombre}}</option>
+								@if ($personal->centro_id==$cen->id)
+									<option value="{{$cen->id}}" selected>{{$cen->nombre}}</option>
+								@else
+									<option value="{{$cen->id}}">{{$cen->nombre}}</option>
+								@endif
 							@endforeach
 						</select>
 					</div>
@@ -140,7 +152,11 @@
 						<label for="users_id">Genero </label>
 						<select data-live-search="true" name="genero_id" id="genero_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($generos as $gen)
-								<option value="{{$gen->id}}">{{$gen->genero}}</option>
+								@if ($personal->genero_id==$gen->id)
+									<option value="{{$gen->id}}" selected>{{$gen->genero}}</option>
+								@else
+									<option value="{{$gen->id}}">{{$gen->genero}}</option>
+								@endif
 							@endforeach
 						</select>
 					</div>

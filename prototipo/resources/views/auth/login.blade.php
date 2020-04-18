@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    
+
         <div class="container-login100" style="background-color: #ECEFF1;">
-            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" style="padding-top: 20px;">
+            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54 cd" style="padding-top: 20px;">
                 <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
                     @csrf
-                    
+
                     <div class="row justify-content-center" style="margin-top: 0;">
                         <div class="col-4 ofsset-4">
                             <img src="{{ asset('img/logo.png') }}" alt="logo" style="display:block; margin:auto; width: 100%;">
@@ -34,7 +34,7 @@
                             </span>
                         @endif
                     </div>
-                    
+
                     <div class="container-login100-form-btn" style="margin-top: 20px;">
                         <div class="wrap-login100-form-btn">
                             <div class="login100-form-bgbtn"></div>
@@ -46,6 +46,6 @@
                 </form>
             </div>
         </div>
-    
+
     <div id="dropDownSelect1"></div>
 @endsection

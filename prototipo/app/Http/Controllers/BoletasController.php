@@ -40,17 +40,18 @@ class BoletasController extends Controller
         ->select('est.id',DB::raw("gra.grado as grado"),DB::raw("sec.seccion as seccion"),DB::raw("ci.fecha_inicio as fecha_inicio"),DB::raw("ci.fecha_fin as fecha_fin"),DB::raw("car.carrera as carrera"),DB::raw("est.nombres as nombre_estudiante"),DB::raw("est.apellidos as apellido_estudiante"))
         ->where('est.id','=',$id)->first();
 
+        $establecimiento=DB::table('establecimiento')->first();
 
         $notas=DB::table('nota as no')
-        ->join('aspecto as asp', 'no.aspecto_id','=','asp.id')
         ->join('estudiante as est', 'no.estudiante_id','=','est.id')
         ->join('curso as cur', 'no.curso_id','=','cur.id')
-        ->join('tipo_evaluacion as te', 'no.tipo_evaluacion_id','=','te.id')
-        ->join('bimestre as bi', 'no.bimestre_id','=','bi.id')
-        ->select('no.id','no.nota',DB::raw("asp.aspecto as aspecto"),DB::raw("est.nombres as nombre_estudiante"),DB::raw("est.apellidos as apellido_estudiante"),DB::raw("cur.curso as curso"),DB::raw("te.tipo as tipo_evaluacion"),DB::raw('bi.bimestre as bimestre'))
-        ->whereRaw("no.estudiante_id = ({$id})")->get();
+        ->select('no.id','no.nota1','no.nota2','no.nota3','no.nota4',
+        DB::raw("cur.curso as curso"))
+        ->where('no.estudiante_id', '=', $id)
+        ->groupBy('curso')
+        ->get();
 
-          $pdf = PDF::loadView('notas.boleta.boleta', compact('notas','datos'))->setPaper('oficio', 'portrait')->setWarnings(false)->save('boleta.pdf');
+          $pdf = PDF::loadView('notas.boleta.boleta', compact('establecimiento','notas','datos'))->setPaper('oficio', 'portrait')->setWarnings(false)->save('boleta.pdf');
           return $pdf->stream('boleta.pdf');
       }
 }

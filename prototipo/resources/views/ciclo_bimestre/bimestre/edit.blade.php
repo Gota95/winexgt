@@ -31,7 +31,11 @@
 						<label for="ciclo_id">Ciclo </label>
 						<select data-live-search="true" name="ciclo_id" id="ciclo_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($ciclos as $ci)
-								<option value="{{$ci->id}}">{{$ci->fecha_inicio.' - '.$ci->fecha_fin}}</option>
+								@if ($bimestre->ciclo_id==$ci->id)
+									<option value="{{$ci->id}}" selected>{{$ci->fecha_inicio.' - '.$ci->fecha_fin}}</option>
+								@else
+									<option value="{{$ci->id}}">{{$ci->fecha_inicio.' - '.$ci->fecha_fin}}</option>
+								@endif
 							@endforeach
 						</select>
 					</div>

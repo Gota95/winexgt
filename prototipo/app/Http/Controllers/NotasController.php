@@ -80,8 +80,8 @@ public function store(NotasFormRequest $request /*Request $request*/){
     $estudiantes=DB::table('estudiante')->get();
     $cursos=DB::table('curso')->get();
     $tevaluaciones=DB::table('tipo_evaluacion')->get();
-    return view("notas.nota.edit",["nota"=>Notas::findOrFail($id),"aspectos"=>$aspectos,
-    "estudiantes"=>$estudiantes,"cursos"=>$cursos,"tevaluaciones"=>$tevaluaciones,"bimestres"=>$bimestres]);
+    return view("notas.nota.edit",["nota"=>Notas::findOrFail($id),
+    "estudiantes"=>$estudiantes,"cursos"=>$cursos,"tevaluaciones"=>$tevaluaciones]);
   }
 
   public function update(NotasFormRequest $request, $id){

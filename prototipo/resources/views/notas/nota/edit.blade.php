@@ -20,8 +20,26 @@
 			<div class="row">
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="nota">Nota</label>
-							<input type="number" name="nota" required value="{{$nota->nota}}" class="form-control" step="0.01" min="0">
+						<label for="nota">Unidad I</label>
+							<input type="number" name="nota1" required value="{{$nota->nota1}}" class="form-control" step="0.01" min="0">
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label for="nota">Unidad II</label>
+							<input type="number" name="nota2" required value="{{$nota->nota2}}" class="form-control" step="0.01" min="0">
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label for="nota">Unidad III</label>
+							<input type="number" name="nota3" required value="{{$nota->nota3}}" class="form-control" step="0.01" min="0">
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label for="nota">Unidad IV</label>
+							<input type="number" name="nota4" required value="{{$nota->nota4}}" class="form-control" step="0.01" min="0">
 					</div>
 				</div>
 
@@ -30,7 +48,11 @@
 						<label for="estudiante_id">Estudiante </label>
 						<select data-live-search="true" name="estudiante_id" id="estudiante_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($estudiantes as $est)
-								<option value="{{$est->id}}">{{$est->nombres.' '.$est->apellidos}}</option>
+								@if ($nota->estudiante_id==$est->id)
+									<option value="{{$est->id}}" selected>{{$est->nombres.' '.$est->apellidos}}</option>
+								@else
+									<option value="{{$est->id}}">{{$est->nombres.' '.$est->apellidos}}</option>
+								@endif
 							@endforeach
 						</select>
 					</div>
@@ -41,7 +63,11 @@
 						<label for="curso_id">Curso </label>
 						<select data-live-search="true" name="curso_id" id="curso_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($cursos as $cur)
-								<option value="{{$cur->id}}">{{$cur->curso}}</option>
+								@if ($nota->curso_id==$cur->id)
+									<option value="{{$cur->id}}" selected>{{$cur->curso}}</option>
+								@else
+									<option value="{{$cur->id}}">{{$cur->curso}}</option>
+								@endif
 							@endforeach
 						</select>
 					</div>
@@ -52,7 +78,11 @@
 						<label for="tipo_evaluacion_id">Tipo de Evaluacion </label>
 						<select data-live-search="true" name="tipo_evaluacion_id" id="tipo_evaluacion_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($tevaluaciones as $te)
-								<option value="{{$te->id}}">{{$te->tipo}}</option>
+								@if ($nota->tipo_evaluacion_id==$te->id)
+									<option value="{{$te->id}}" selected>{{$te->tipo}}</option>
+								@else
+									<option value="{{$te->id}}">{{$te->tipo}}</option>
+								@endif
 							@endforeach
 						</select>
 					</div>

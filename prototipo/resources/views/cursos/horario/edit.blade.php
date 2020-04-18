@@ -44,7 +44,11 @@
 						<label for="curso_id">Curso </label>
 						<select data-live-search="true" name="curso_id" id="curso_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($cursos as $cur)
-								<option value="{{$cur->id}}">{{$cur->curso}}</option>
+								@if ($horario->curso_id==$cur->id)
+									<option value="{{$cur->id}}" selected>{{$cur->curso}}</option>
+								@else
+									<option value="{{$cur->id}}">{{$cur->curso}}</option>
+								@endif
 							@endforeach
 						</select>
 					</div>
@@ -55,7 +59,11 @@
 						<label for="seccion_id">Seccion </label>
 						<select data-live-search="true" name="seccion_id" id="seccion_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($secciones as $sec)
-								<option value="{{$sec->id}}">{{$sec->seccion}}</option>
+								@if ($horario->seccion_id==$sec->id)
+									<option value="{{$sec->id}}" selected>{{$sec->seccion}}</option>
+								@else
+									<option value="{{$sec->id}}">{{$sec->seccion}}</option>
+								@endif
 							@endforeach
 						</select>
 					</div>

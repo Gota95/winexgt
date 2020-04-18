@@ -108,6 +108,7 @@ return array(
     'App\\Http\\Requests\\TipoEvaluacionFormRequest' => $baseDir . '/app/Http/Requests/TipoEvaluacionFormRequest.php',
     'App\\Http\\Requests\\UsuariosFormRequest' => $baseDir . '/app/Http/Requests/UsuariosFormRequest.php',
     'App\\Imports\\EstudianteImport' => $baseDir . '/app/Imports/EstudianteImport.php',
+    'App\\Imports\\NotasImport' => $baseDir . '/app/Imports/NotasImport.php',
     'App\\Jornadas' => $baseDir . '/app/Jornadas.php',
     'App\\Lamina' => $baseDir . '/app/Lamina.php',
     'App\\Mensajeria' => $baseDir . '/app/Mensajeria.php',

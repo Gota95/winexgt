@@ -78,7 +78,10 @@
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label for="estado">Estado</label>
-						<input type="text" name="estado" required value="{{old('estado')}}" class="form-control" placeholder="estado...">
+						<select name="estado" class="form-control">
+								<option value="1">Activo</option>
+								<option value="0">Inactivo</option>
+						</select>
 					</div>
 				</div>
 

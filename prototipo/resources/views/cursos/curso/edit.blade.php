@@ -51,7 +51,11 @@
 						<label for="grado_id">Grado </label>
 						<select data-live-search="true" name="grado_id" id="grado_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($grados as $gra)
-								<option value="{{$gra->id}}">{{$gra->grado}}</option>
+								@if ($curso->grado_id==$gra->id)
+									<option value="{{$gra->id}}" selected>{{$gra->grado}}</option>
+								@else
+									<option value="{{$gra->id}}">{{$gra->grado}}</option>
+								@endif
 							@endforeach
 						</select>
 					</div>
@@ -62,7 +66,11 @@
 						<label for="personal_id">Personal </label>
 						<select data-live-search="true" name="personal_id" id="personal_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($personales as $per)
-								<option value="{{$per->id}}">{{$per->nombres.' '.$per->apellidos}}</option>
+								@if ($curso->personal_id==$per->id)
+									<option value="{{$per->id}}" selected>{{$per->nombres.' '.$per->apellidos}}</option>
+								@else
+									<option value="{{$per->id}}">{{$per->nombres.' '.$per->apellidos}}</option>
+								@endif
 							@endforeach
 						</select>
 					</div>

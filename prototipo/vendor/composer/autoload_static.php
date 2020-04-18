@@ -641,6 +641,7 @@ class ComposerStaticInit4f234e5a9b2acc8aa4501843b4fd450c
         'App\\Http\\Requests\\TipoEvaluacionFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/TipoEvaluacionFormRequest.php',
         'App\\Http\\Requests\\UsuariosFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UsuariosFormRequest.php',
         'App\\Imports\\EstudianteImport' => __DIR__ . '/../..' . '/app/Imports/EstudianteImport.php',
+        'App\\Imports\\NotasImport' => __DIR__ . '/../..' . '/app/Imports/NotasImport.php',
         'App\\Jornadas' => __DIR__ . '/../..' . '/app/Jornadas.php',
         'App\\Lamina' => __DIR__ . '/../..' . '/app/Lamina.php',
         'App\\Mensajeria' => __DIR__ . '/../..' . '/app/Mensajeria.php',

@@ -72,7 +72,11 @@
 						<label for="users_id">Genero </label>
 						<select data-live-search="true" name="genero_id" id="genero_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($generos as $gen)
-								<option value="{{$gen->id}}">{{$gen->genero}}</option>
+								@if ($encargado->genero_id==$gen->id)
+									<option value="{{$gen->id}}" selected>{{$gen->genero}}</option>
+								@else
+									<option value="{{$gen->id}}">{{$gen->genero}}</option>
+								@endif
 							@endforeach
 						</select>
 					</div>
@@ -83,7 +87,11 @@
 						<label for="users_id">Estudiante a su Cargo </label>
 						<select data-live-search="true" name="estudiante_id" id="estudiante_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($estudiantes as $est)
-								<option value="{{$est->id}}">{{$est->nombres.' '.$est->apellidos}}</option>
+								@if ($encargado->estudiante_id==$est->id)
+									<option value="{{$est->id}}" selected>{{$est->nombres.' '.$est->apellidos}}</option>
+								@else
+									<option value="{{$est->id}}">{{$est->nombres.' '.$est->apellidos}}</option>
+								@endif
 							@endforeach
 						</select>
 					</div>

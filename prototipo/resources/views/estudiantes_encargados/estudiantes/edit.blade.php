@@ -77,7 +77,15 @@
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label for="estado">Estado</label>
-						<input type="text" name="estado" required value="{{$estudiante->estado}}" class="form-control" placeholder="estado...">
+						<select name="estado" class="form-control">
+							@if ($estudiante->estado==1)
+								<option value="1" selected>Activo</option>
+								<option value="0">Inactivo</option>
+							@else
+								<option value="1">Activo</option>
+								<option value="0" selected>Inactivo</option>
+							@endif
+						</select>
 					</div>
 				</div>
 
@@ -86,7 +94,11 @@
 						<label for="users_id">Genero </label>
 						<select data-live-search="true" name="genero_id" id="genero_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($generos as $gen)
-								<option value="{{$gen->id}}">{{$gen->genero}}</option>
+								@if ($estudiante->genero_id==$gen->id)
+									<option value="{{$gen->id}}" selected>{{$gen->genero}}</option>
+								@else
+									<option value="{{$gen->id}}">{{$gen->genero}}</option>
+								@endif
 							@endforeach
 						</select>
 					</div>

@@ -5,13 +5,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>INMO</title>
+        <title>WINEX</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('fontawesome-free/css/all.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('simple-line-icons/css/simple-line-icons.css') }}">
-        
+
         <link rel="stylesheet" type="text/css" href="{{ asset('css/landing-page.min.css') }}">
 
     </head>
@@ -27,7 +27,7 @@
                             <a href="{{ url('/home') }}">Principal</a>
                         @else
                             <a href="{{ route('login') }}" style="text-decoration-line: none"><i class="icon-user text-primary"></i> Iniciar Sesión</a>
-                            
+
                         @endauth
                     </div>
                 @endif
